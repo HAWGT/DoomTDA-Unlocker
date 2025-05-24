@@ -1,9 +1,5 @@
 #include <windows.h>
-#include "psapi.h"
-#include <minwindef.h>
-#include <processthreadsapi.h>
 #include <iostream>
-#include <tchar.h>
 #include <vector>
 
 void* module = GetModuleHandle(nullptr);
