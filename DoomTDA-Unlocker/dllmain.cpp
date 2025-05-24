@@ -109,6 +109,9 @@ uint64_t __fastcall hk_ListOnlineBnetEntitlements(uint64_t a1, uint64_t a2)
 	uint64_t v1 = *(uint64_t*)(v0 + 0x8);
 	uint64_t v2 = *(uint64_t*)(v1 + 0x130);
 
+	uint64_t origStr = *(uint64_t*)(v2);
+	uint64_t origSize = *(uint64_t*)(v2 + 0x8);
+
 	*(int*)(v1 + 0x148) = sizeof(JSON);
 	*(int*)(v1 + 0x150) = sizeof(JSON);
 	*(uint64_t*)(v2) = (uint64_t)JSON;
@@ -116,10 +119,10 @@ uint64_t __fastcall hk_ListOnlineBnetEntitlements(uint64_t a1, uint64_t a2)
 
 	uint64_t retVal = Orig_ListOnlineBnetEntitlements(a1, a2);
 
-	*(int*)(v1 + 0x148) = 0;
-	*(int*)(v1 + 0x150) = 0;
-	*(uint64_t*)(v2) = 0;
-	*(int*)(v2 + 0x8) = 0;
+	*(int*)(v1 + 0x148) = origSize;
+	*(int*)(v1 + 0x150) = origSize;
+	*(uint64_t*)(v2) = origStr;
+	*(int*)(v2 + 0x8) = origSize;
 
 	return retVal;
 }
